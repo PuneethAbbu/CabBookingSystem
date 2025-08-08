@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/success.css}">
+</head>
+<body>
+    <div class="center confirmation-center">
+        <div class="success-icon">✓</div>
+        <div class="success-message">
+            Your cab has been successfully booked.<br>
+            Thank you for choosing our service.
+        </div>
+        <div class="return-home">
+            <a th:href="@{/cabBooking}" class="confirm-btn">Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Cab</title>
+    <link rel="stylesheet" th:href="@{/css/booking.css}">
+</head>
+<body>
+    <div class="center">
+        <h1>Book a Cab</h1>
+        <form action="/cabBooking/confirmation" th:object="${booking}" method="post">
+            <label>From:
+                <select th:field="*{fromId}" id="from" required>
+                    <option value="">-- Select --</option> <!-- Always show this option -->
+                    <option th:each="location : ${locations}" 
+                            th:value="${location.id}"
+                            th:text="${location.name}">
+                    </option>
+                </select>
+                <span th:if="${#fields.hasErrors('fromId')}" th:errors="*{fromId}"></span>
+            </label>
+            
+            <label>To:
+                <select th:field="*{toId}" id="to" required>
+                    <option value="">-- Select --</option> <!-- Always show this option -->
+                    <option th:each="loc : ${locations}" 
+                            th:value="${loc.id}"
+                            th:text="${loc.name}">
+                    </option>
+                </select>
+                <span th:if="${#fields.hasErrors('toId')}" th:errors="*{toId}"></span>
+            </label>
+            
+            <label>Cab Type:
+                <select th:field="*{cabTypeId}" required>
+                    <option value="">-- Select --</option> <!-- Always show this option -->
+                    <option th:each="cab : ${cabTypes}" 
+                            th:value="${cab.id}"
+                            th:text="${cab.name}">
+                    </option>
+                </select>
+                <span th:if="${#fields.hasErrors('cabTypeId')}" th:errors="*{cabTypeId}"></span>
+            </label>
+            
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <script th:src="@{/js/booking.js}"></script>
+</body>
+</html>

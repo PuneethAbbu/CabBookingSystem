@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Confirm Your Booking</title>
+    <link rel="stylesheet" th:href="@{/css/bookingConfirmation.css}">
+</head>
+<body>
+    <div class="center confirmation-center">
+        <h1>Booking Confirmation</h1>
+        
+        <!-- Fare Amount Display -->
+        <div class="fare-display">
+            <p>Your fare amount is:</p>
+            <div class="fare-amount" th:text="'Rs.' + ${#numbers.formatDecimal(fareAmount, 1, 2)}"></div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="confirmation-actions">
+            <form th:action="@{/cabBooking/success}" method="post">
+                <input type="hidden" name="fareAmount" th:value="${fareAmount}"/>
+                <button type="submit" class="confirm-btn">Continue</button>
+            </form>
+            
+            <a th:href="@{/cabBooking}" class="cancel-btn">Cancel</a>
+        </div>
+    </div>
+</body>
+</html>
